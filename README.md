@@ -1,14 +1,8 @@
 # Camouflaged Object Detection using the YOLOv8 Segmentation Architecture
 
 
-### Installations required
-<ul>
-    <li>Matplotlib</li>
-    <li>OpenCV</li>
-    <li>YAML</li>
-    <li>Ultralytics</li>
-</ul>
-
+### Installations Required
+Run the command below to install the necessary librarires.
 ```
 pip install -r requirements.txt
 ```
