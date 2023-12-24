@@ -13,4 +13,3 @@
 pip install -r requirements.txt
 ```
 
->>>>>>> 10d58306607672ef25a96448a51e4581dc3cc673
