@@ -1,10 +1,6 @@
 #  Template by: https://github.com/bnsreenu
 """
-This code defines a function to display an image with its corresponding annotations. 
-It reads an image and its associated annotation file in the YOLO v8 text format, 
-then plots the image along with colored polygons representing the annotated regions. 
-The polygons are drawn according to the coordinates provided in the annotation file, 
-and colors are assigned based on the category ID.
+This code defines a function to display an image with its corresponding annotations. It reads an image and its associated annotation file in the YOLO v8 text format, then plots the image along with colored polygons representing the annotated regions. The polygons are drawn according to the coordinates provided in the annotation file, and colors are assigned based on the category ID.
 
 """
 
@@ -47,6 +43,6 @@ def display_image_with_annotations(image_path, annotation_path, colors=None):
     plt.show()  # Display the image with annotations
 
 # Example usage with specified image and annotation paths
-image_path = "EM-platelet-multi/yolo_dataset/train/images/3D-EM-platelet-train04.png"
-annotation_path = "EM-platelet-multi/yolo_dataset/train/labels/3D-EM-platelet-train04.txt"
+image_path = "../yolo output/train/images/camourflage_00003.jpg"
+annotation_path = "../yolo output/train/labels/camourflage_00003.txt"
 display_image_with_annotations(image_path, annotation_path)
