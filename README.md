@@ -6,10 +6,12 @@
     <li>Matplotlib</li>
     <li>OpenCV</li>
     <li>YAML</li>
+    <li>Ultralytics</li>
 </ul>
 
 ```
 pip install matplotlib
 pip install opencv-python
 pip install pyyaml
+pip install ultralytics
 ```
