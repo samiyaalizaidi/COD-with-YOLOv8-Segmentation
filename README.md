@@ -9,7 +9,5 @@
 </ul>
 
 ```
-pip install matplotlib
-pip install opencv-python
-pip install pyyaml
+pip install -r requirements.txt
 ```
