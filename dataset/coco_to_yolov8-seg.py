@@ -1,23 +1,16 @@
 # Template by: https://github.com/bnsreenu
 """
-This code transforms a dataset of images and annotations into a format suitable 
-for training a YOLO (You Only Look Once) object detection model, and it also 
-creates a YAML configuration file required for training the model.
+This code transforms a dataset of images and annotations into a format suitable for training a YOLO (You Only Look Once) object detection model, and it also creates a YAML configuration file required for training the model.
 
-It reads coco style json annotations supplied as a single json file and also 
-images as input. 
+It reads coco style json annotations supplied as a single json file and also images as input. 
 
 Here are the key steps in the code:
 
-1. Convert Images to YOLO Format: The convert_to_yolo function takes paths for 
-input images and annotations (in JSON format), and directories to store the 
-output images and labels. It then performs the following operations:
+1. Convert Images to YOLO Format: The convert_to_yolo function takes paths for input images and annotations (in JSON format), and directories to store the output images and labels. It then performs the following operations:
 
 - Reads the input JSON file containing annotations.
-- Copies all PNG images from the input directory to the output directory.
-- Normalizes the polygon segmentation data related to each image and writes 
-them to text files, mapping them to the appropriate category 
-(e.g., Alpha, Cells, Mito, Vessels).
+- Copies all images from the input directory to the output directory.
+- Normalizes the polygon segmentation data related to each image and writes them to text files, mapping them to the appropriate category 
 - The resulting text files contain information about the object category and the normalized coordinates of the polygons that describe the objects.
 
 2. Create YAML Configuration File: The create_yaml function takes paths to the input JSON file containing categories, training, validation, and optional test paths. It then:
@@ -28,11 +21,7 @@ of classes, and paths to the training, validation, and test datasets.
 - Writes this dictionary to a YAML file, which can be used as a configuration 
 file for training a model (e.g., a YOLO model).
     
-
-
-The text annotation file consists of lines representing individual object 
-annotations, with each line containing the class ID followed by the normalized 
-coordinates of the polygon describing the object.
+The text annotation file consists of lines representing individual object annotations, with each line containing the class ID followed by the normalized coordinates of the polygon describing the object.
 
 Example structure of the YOLO annotation file:
 
@@ -61,11 +50,13 @@ def convert_to_yolo(input_images_path, input_json_path, output_images_path, outp
     # List to store filenames
     file_names = []
     for filename in os.listdir(input_images_path):
-        if filename.endswith(".png"):
+        if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
             source = os.path.join(input_images_path, filename)
             destination = os.path.join(output_images_path, filename)
             shutil.copy(source, destination)
             file_names.append(filename)
+
+    
 
     # Function to get image annotations
     def get_img_ann(image_id):
@@ -73,8 +64,10 @@ def convert_to_yolo(input_images_path, input_json_path, output_images_path, outp
 
     # Function to get image data
     def get_img(filename):
-        return next((img for img in data['images'] if img['file_name'] == filename), None)
+        return next((img for img in data['images'] if img['file_name'] == filename.split(".")[0] + '.png'), None)
 
+    counter = 0
+    
     # Iterate through filenames and process each image
     for filename in file_names:
         img = get_img(filename)
@@ -87,10 +80,14 @@ def convert_to_yolo(input_images_path, input_json_path, output_images_path, outp
         if img_ann:
             with open(os.path.join(output_labels_path, f"{os.path.splitext(filename)[0]}.txt"), "a") as file_object:
                 for ann in img_ann:
-                    current_category = ann['category_id'] - 1
+                    current_category = ann['category_id'] 
                     polygon = ann['segmentation'][0]
                     normalized_polygon = [format(coord / img_w if i % 2 == 0 else coord / img_h, '.6f') for i, coord in enumerate(polygon)]
                     file_object.write(f"{current_category} " + " ".join(normalized_polygon) + "\n")
+        
+        counter += 1
+
+    print(f'{counter} labels created!')
 
 # Function to create a YAML file for the dataset
 def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_path=None):
@@ -98,7 +95,7 @@ def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_pa
         data = json.load(f)
     
     # Extract the category names
-    names = [category['name'] for category in data['categories']]
+    names = ['Camo']
     
     # Number of classes
     nc = len(names)
@@ -116,32 +113,34 @@ def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_pa
     with open(output_yaml_path, 'w') as file:
         yaml.dump(yaml_data, file, default_flow_style=False)
 
+        print('yaml created!')
+
 
 if __name__ == "__main__":
-    base_input_path = "EM-platelet-multi/input/"
-    base_output_path = "EM-platelet-multi/yolo_dataset/"
+    base_input_path = "../sample data/"
+    base_output_path = "../yolo output/"
 
     # Processing validation dataset (if needed)
     convert_to_yolo(
-        input_images_path=os.path.join(base_input_path, "val_images"),
-        input_json_path=os.path.join(base_input_path, "val_images/val.json"),
-        output_images_path=os.path.join(base_output_path, "valid/images"),
-        output_labels_path=os.path.join(base_output_path, "valid/labels")
+        input_images_path=os.path.join(base_input_path, "val/images"),
+        input_json_path=os.path.join(base_input_path, "val/val.json"),
+        output_images_path=os.path.join(base_output_path, "val/images"),
+        output_labels_path=os.path.join(base_output_path, "val/labels")
     )
 
     # Processing training dataset 
     convert_to_yolo(
-        input_images_path=os.path.join(base_input_path, "train_images"),
-        input_json_path=os.path.join(base_input_path, "train_images/train.json"),
+        input_images_path=os.path.join(base_input_path, "train/images"),
+        input_json_path=os.path.join(base_input_path, "train/train.json"),
         output_images_path=os.path.join(base_output_path, "train/images"),
         output_labels_path=os.path.join(base_output_path, "train/labels")
     )
     
     # Creating the YAML configuration file
     create_yaml(
-        input_json_path=os.path.join(base_input_path, "train_images/train.json"),
+        input_json_path=os.path.join(base_input_path, "train/train.json"),
         output_yaml_path=os.path.join(base_output_path, "data.yaml"),
-        train_path="EM-Platelet/train/images",
-        val_path="EM-Platelet/valid/images",
-        test_path='../test/images'  # or None if not applicable
+        train_path="../yolo output/train/images",
+        val_path="../yolo output/val/images",
+        test_path='../yolo output/test/images'  # or None if not applicable
     )
