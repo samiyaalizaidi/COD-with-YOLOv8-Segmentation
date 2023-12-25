@@ -2,3 +2,4 @@ pyyaml
 ultralytics
 opencv-python
 matplotlib
+scikit-learn
