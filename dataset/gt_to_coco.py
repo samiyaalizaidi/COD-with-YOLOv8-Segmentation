@@ -5,7 +5,7 @@ This code automates the conversion of binary masks representing different object
 The code is based on the following folder structure for training and validation images and masks. You need to change the code based on your folder structure or organize your data to the format below.
 
 ../sample data/   # Primary data folder for the project
-├── test/           
+├── train/           
 │   ├── images/
 │   │   ├── image01.png
 │   │   ├── image02.png
@@ -15,19 +15,19 @@ The code is based on the following folder structure for training and validation 
 │   │   ├── image02.png
 │   │   └── ...
 ├── val/ 
-│   |   ├── images/
-│   │   |   ├── image01.png
-│   │   |   ├── image02.png
-│   │   |   └── ...
+│   ├── images/
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
 │   ├── gt/       
-│   │   |   ├── image01.png
-│   │   |   ├── image02.png
-│   │   |   └── ...
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
 ├── test/ 
-│   |   ├── images/
-│   │   |   ├── image01.png
-│   │   |   ├── image02.png
-│   │   |   └── ...
+│   ├── images/
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
 └── ...
 
 
@@ -49,7 +49,7 @@ import os
 import cv2
 
 MASK_EXT = 'png'
-ORIGINAL_EXT = 'png'
+ORIGINAL_EXT = 'jpg'
 image_id = 0
 annotation_id = 0
 
@@ -138,10 +138,10 @@ def process_masks(mask_path, dest_json):
     print("Created %d annotations for images in folder: %s" % (annotation_cnt, mask_path))
 
 if __name__ == "__main__":
-    train_mask_path = "../sample data/train/gt"
-    train_json_path = "../sample data/train/train.json"
+    train_mask_path = "../CAMO/train/gt"
+    train_json_path = "../CAMO/train/train.json"
     process_masks(train_mask_path, train_json_path)
 
-    val_mask_path = "../sample data/val/gt"
-    val_json_path = "../sample data/val/val.json"
+    val_mask_path = "../CAMO/val/gt"
+    val_json_path = "../CAMO/val/val.json"
     process_masks(val_mask_path, val_json_path)
