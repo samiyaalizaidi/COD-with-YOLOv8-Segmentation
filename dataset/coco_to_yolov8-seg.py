@@ -64,7 +64,7 @@ def convert_to_yolo(input_images_path, input_json_path, output_images_path, outp
 
     # Function to get image data
     def get_img(filename):
-        return next((img for img in data['images'] if img['file_name'] == filename.split(".")[0] + '.png'), None)
+        return next((img for img in data['images'] if img['file_name'] == filename), None)
 
     counter = 0
     
@@ -117,8 +117,8 @@ def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_pa
 
 
 if __name__ == "__main__":
-    base_input_path = "../sample data/"
-    base_output_path = "../yolo output/"
+    base_input_path = "../CAMO/"
+    base_output_path = "../CAMO-Labels/"
 
     # Processing validation dataset (if needed)
     convert_to_yolo(
