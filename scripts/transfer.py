@@ -42,7 +42,7 @@ def transfer_files(source_folder, destination_folder, file_extensions=None, move
     print(f"{len(files)} files successfully transferred.")
 
 # RUN
-source_folder = '../data/CAMO-V.1.0-CVIU2019/Images/Test'  # path of the source folder
+source_folder = '../Datasets/NC4K-old/'  # path of the source folder
 destination_folder = '../CAMO-Labels/test'  # path of the destination folder
 file_extensions = ['.txt', '.jpg', '.png']  # Specify file extensions to transfer (None for all files)
 move_files = False  # Set to True to move the files instead of copying.
