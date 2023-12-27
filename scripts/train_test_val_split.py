@@ -76,7 +76,7 @@ def train_test_val_split(input_folder_img, input_folder_gt, output_folder, GT_EX
     # Copy files to the corresponding folders
     for file in train_files:
         # Get the proper extensions
-        filename = file.split('.')[0]
+        filename = file.rsplit('.', 1)[0]
         img = filename + '.' + IMG_EXT
         gt = filename + '.' + GT_EXT
 
@@ -92,7 +92,7 @@ def train_test_val_split(input_folder_img, input_folder_gt, output_folder, GT_EX
 
     for file in val_files:
         # Get the proper extensions
-        filename = file.split('.')[0]
+        filename = file.rsplit('.', 1)[0]
         img = filename + '.' + IMG_EXT
         gt = filename + '.' + GT_EXT
 
@@ -108,7 +108,7 @@ def train_test_val_split(input_folder_img, input_folder_gt, output_folder, GT_EX
 
     for file in test_files:
         # Get the proper extensions
-        filename = file.split('.')[0]
+        filename = file.rsplit('.', 1)[0]
         img = filename + '.' + IMG_EXT
         gt = filename + '.' + GT_EXT
 
