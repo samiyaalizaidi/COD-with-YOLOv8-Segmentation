@@ -103,10 +103,10 @@ def split_dataset(input_folder_img, input_folder_gt, output_folder, GT_EXT, IMG_
     print(f"Dataset split completed. {len(train_files)} files in training set and {len(val_files)} files in validation set.")
 
 # Arguments
-input_folder_img = '../Datasets/NC4K-old/images'  # path to the images
-input_folder_gt = '../Datasets/NC4K-old/GT' # path to the binary masks
-output_folder = '../Datasets/NC4K'  # path to the output folder
-split_ratio = 0.9  # Change the split ratio if needed
+input_folder_img = '../Datasets/Combined-YOLOv8/images'  # path to the images
+input_folder_gt = '../Datasets/Combined-YOLOv8/labels' # path to the binary masks
+output_folder = '../Datasets/YOLOv8-Combined-Split'  # path to the output folder
+split_ratio = 0.8  # Change the split ratio if needed
 seed = 42  # Change the seed if you want reproducibility
 GT_EXT = 'png'
 IMG_EXT = 'jpg'

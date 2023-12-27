@@ -55,8 +55,8 @@ def create_empty_txt(input_img_directory: str, output_txt_directory: str, string
     print(f'{counter} empty text files created!')
 
 # RUN
-input_img_directory = "../Datasets/COD10K-New/val/images" # path to the images
-output_path = "../Datasets/COD10K-New/val/labels" # location to save the empty txt    
+input_img_directory = "../Datasets/YOLOv8-Combined-Split/test/images" # path to the images
+output_path = "../Datasets/YOLOv8-Combined-Split/test/labels" # location to save the empty txt    
 string = 'NonCAM' # The required string
 
 create_empty_txt(input_img_directory, output_path, string)
