@@ -3,9 +3,8 @@ import boto3
 BUCKET_NAME = "cod-ash"
 
 # enter authentication credentials
-s3 = boto3.resource('s3', aws_access_key_id = "Hussain-IAM-access",
-                          aws_secret_access_key= "7RzpVD9}")
-
+s3 = boto3.resource('s3', aws_access_key_id = "AKIATXVF7NULQ5RPN6ND",
+                          aws_secret_access_key= "JOIfPlcLvgeH+4ydoBLty2PUwkqVzDqqx8AxrxcX")
 KEY = "YOLOv8-Combined-Split.zip" # replace with your object key
 
 try:
