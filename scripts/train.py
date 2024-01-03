@@ -9,7 +9,6 @@ from ultralytics import YOLO
 dataset = ""
 
 # load the pretrained models
-model = YOLO('yolov8n-seg.yaml')
 model = YOLO('yolov8n-seg.pt')
 
 # name of the dataset
