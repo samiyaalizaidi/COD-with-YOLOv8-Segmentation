@@ -1,4 +1,5 @@
 import boto3
+import botocore
 
 BUCKET_NAME = "cod-ash"
 
