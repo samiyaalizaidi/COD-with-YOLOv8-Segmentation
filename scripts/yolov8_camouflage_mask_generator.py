@@ -41,8 +41,7 @@ def process_images(input_dir, output_dir, model_path):
                   obj_mask = torch.any(obj_masks, dim=0).int() * 255
 
                   # Saving the binary mask output of the prediction
-                  cv2.imwrite(os.path.join(output_dir, f'{orig_img_name}.png'), obj_mask.cpu().numpy())
-
+                  cv2.imwrite(os.path.join(output_dir, f'{orig_img_name}_binary_mask.jpg'), obj_mask.cpu().numpy())
             except Exception as e:
               counter += 1
               # creating an image with the same dimensions to have an empty binary mask with the same name
