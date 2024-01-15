@@ -70,7 +70,7 @@ def transfer_few_files(input_dir_base: str, output_dir_base: str, num_files: int
             shutil.copy2(source_path, destination_path)
 
         # copy the binary masks (if required)
-        if labels:
+        if gt:
             filename = os.path.splitext(image)[0]
             filename = f'{filename}.png'
             source_path = os.path.join(gt_input, filename)
@@ -84,7 +84,7 @@ def transfer_few_files(input_dir_base: str, output_dir_base: str, num_files: int
 # RUN THE CODE
 
 base_input = "../Datasets/base" # base directory of the input
-base_output = "../Datasets/MoCA+base" # base directory of the output
+base_output = "../Datasets/Dataset New" # base directory of the output
 num_files = 1326 # number of files to be transferred
 
 transfer_few_files(base_input, base_output, num_files)
