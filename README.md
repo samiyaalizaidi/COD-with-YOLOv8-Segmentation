@@ -15,6 +15,8 @@
 | MoCA + Base &#8594; YOLOv8m| 0.664 | 0.725 | 0.480 | 0.120 | 5,326 |
 | Equal + Base &#8594; YOLOv8m| 0.778 | 0.852 | 0.653 | 0.056 | 5,326 |
 
+All of these results were obtained by testing the models on the benchmark COD10K testing dataset that contains 2026 camouflaged images.
+
 ### Test Dataset Hierarchy
 
 ```
