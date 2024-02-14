@@ -125,12 +125,12 @@ def train_test_val_split(input_folder_img, input_folder_gt, output_folder, GT_EX
     print(f"Dataset split completed. {len(train_files)} files in training set, {len(val_files)} files in validation set, and {len(test_files)} files in test set.")
 
 # Example usage
-input_folder_img = '../Datasets/COD10K-v3/COD10K-v3/Train/Images'  # path to the images
-input_folder_gt = '../Datasets/COD10K-v3/COD10K-v3/Train/GT_Object' # path to the binary masks
-output_folder = '../Datasets/COD10K-New'
-split_ratios = (0.75, 0.15, 0.1)  # Adjust the split ratios if needed
+input_folder_img = 'D:/Kvasir-SEG/images'  # path to the images
+input_folder_gt = 'D:/Kvasir-SEG/masks' # path to the binary masks
+output_folder = '../Datasets/Kvasir-SEG-Split'
+split_ratios = (0.65, 0.15, 0.2)  # Adjust the split ratios if needed
 seed = 42  # Change the seed if you want reproducibility
-GT_EXT = "png" 
+GT_EXT = "jpg" 
 IMG_EXT = "jpg"
 
 train_test_val_split(input_folder_img, input_folder_gt, output_folder, GT_EXT, IMG_EXT, split_ratios, seed)

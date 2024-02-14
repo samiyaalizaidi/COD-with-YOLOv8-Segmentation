@@ -48,7 +48,7 @@ import json
 import os
 import cv2
 
-MASK_EXT = 'png'
+MASK_EXT = 'jpg'
 ORIGINAL_EXT = 'jpg'
 image_id = 0
 annotation_id = 0
@@ -140,14 +140,14 @@ def process_masks(mask_path, dest_json):
     print("Created %d annotations for images in folder: %s" % (annotation_cnt, mask_path))
 
 if __name__ == "__main__":
-    train_mask_path = "../Datasets/COD10K-New/train/gt"
-    train_json_path = "../Datasets/COD10K-New/train/train.json"
+    train_mask_path = "../Datasets/Kvasir-SEG-Split/train/gt"
+    train_json_path = "../Datasets/Kvasir-SEG-Split/train/train.json"
     process_masks(train_mask_path, train_json_path)
 
-    val_mask_path = "../Datasets/COD10K-New/val/gt"
-    val_json_path = "../Datasets/COD10K-New/val/val.json"
+    val_mask_path = "../Datasets/Kvasir-SEG-Split/val/gt"
+    val_json_path = "../Datasets/Kvasir-SEG-Split/val/val.json"
     process_masks(val_mask_path, val_json_path)
 
-    test_mask_path = "../Datasets/COD10K-v3/COD10K-v3/Test/GT_Object"
-    test_json_path = "../Datasets/YOLOv8-Combined-Split/test/test.json"
+    test_mask_path = "../Datasets/Kvasir-SEG-Split/test/gt"
+    test_json_path = "../Datasets/Kvasir-SEG-Split/test/test.json"
     process_masks(test_mask_path, test_json_path)

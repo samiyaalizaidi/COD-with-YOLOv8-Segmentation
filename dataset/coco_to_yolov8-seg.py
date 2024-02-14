@@ -111,8 +111,8 @@ def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_pa
 
 
 if __name__ == "__main__":
-    base_input_path = "../Datasets/YOLOv8-Combined-Split"
-    base_output_path = "../Datasets/YOLOv8-Combined-Split"
+    base_input_path = "../Datasets/Kvasir-SEG-Split"
+    base_output_path = "../Datasets/Kvasir-SEG-Split"
 
     # Processing validation dataset 
     convert_to_yolo(
