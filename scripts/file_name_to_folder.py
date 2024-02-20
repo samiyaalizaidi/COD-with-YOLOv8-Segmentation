@@ -6,6 +6,16 @@ import os
 import shutil
 
 def file_name_to_folder(base_input_dir: str, base_output_dir: str, input_sub_dir: list):
+    """
+    Function to create folders using the image names.
+    Args:
+        base_input_dir: path to the base directory that contains sub folders.
+        base_output_dir: path to the directory where the folders should be created
+        input_sub_dir: subfolders within the base input directory. In the form of a list.
+
+    Returns:
+        None
+    """
     # to keep track of the classes
     classes_list    = []
     # to keep track of the number of images copied
