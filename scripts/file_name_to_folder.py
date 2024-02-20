@@ -26,13 +26,13 @@ for subfolder in input_sub_dir:
         class_name = file.rsplit('_')
         class_name = "_".join(class_name[:-1])
         # create the source path for the file
-        path_src  = os.path.join(sub_folder_path, class_name)
+        path_src  = sub_folder_path
         # create the destination path for the file
         path_dest = os.path.join(base_output_dir, class_name)
         # create a new directory if it doesnt already exist
         os.makedirs(path_dest, exist_ok="True")
         # if not in the list, append. To keep track
-        if class_name in classes_list:
+        if class_name not in classes_list:
             classes_list.append(class_name)
         # paths to the file, for both source and destination
         file_path_src  = os.path.join(path_src, file)
