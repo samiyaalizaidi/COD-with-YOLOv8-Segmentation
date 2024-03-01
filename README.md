@@ -2,7 +2,7 @@
 
 ## Experiments Performed
 
-All of these results were obtained by testing the models on the benchmark ``COD10K`` testing dataset that contains ``2026`` camouflaged images.
+These metrics were computed using the [COD-ToolBox](https://github.com/DengPingFan/CODToolbox) provided by Deng-Ping Fan et al. The tests were performed on the benchmark ``COD10K`` testing dataset that contains ``2026`` camouflaged images. 
 
 #### Entire Dataset Including MoCA
 
