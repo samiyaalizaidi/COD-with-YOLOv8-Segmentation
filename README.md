@@ -23,6 +23,9 @@ All of these results were obtained by testing the models on the benchmark ``COD1
 #### Equal Datasets
 All experiments in the category were performed using ``YOLOv8m``.
 
+- Base dataset has a total of ``1326`` images, out of which ``1250`` images are from ``CAMO`` and ``76`` images are from ``CHAMELEON``.
+- Equal dataset has ``1333`` images each from ``COD10K``, ``MoCA``, and ``NC4K``.
+
 | Dataset | $S\alpha$ &#8593; | $\alpha E$ &#8593; | $wF$ &#8593; | $M$ &#8595; | Images |
 | --- | --- | --- | --- | --- | --- |
 | COD10K + Base | 0.832 | 0.907 | 0.744 | 0.038 | 5,326 |
