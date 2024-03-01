@@ -40,26 +40,59 @@ All experiments in the category were performed using ``YOLOv8m``.
 ### Test Dataset Hierarchy
 
 ```
-|Evaluation Dataset
-
-|-- CAMO
-|   |-- GT
-|   |-- Nano_Gts
-|   |-- Medium_Gts
-|   |-- Xlarge_Gts
-
-|-- CHAMELEON
-|   |-- GT
-|   |-- Nano_Gts
-|   |-- Medium_Gts
-|   |-- Xlarge_Gts
-
-|-- COD10k
-|   |-- GT
-|   |-- Nano_Gts
-|   |-- Medium_Gts
-|   |-- Xlarge_Gts
-
+../Evaluation Dataset/   
+├── CAMO/           
+│   ├── GT/
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Nano_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Medium_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Xlarge_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+├── COD10K/ 
+│   ├── GT/
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Nano_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Medium_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Xlarge_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+├── CHAMELEON/ 
+│   ├── GT/
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Nano_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Medium_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+│   ├── Xlarge_Gts/        
+│   │   ├── image01.png
+│   │   ├── image02.png
+│   │   └── ...
+└── ...
 ```
 
 ### Installations Required
