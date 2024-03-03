@@ -104,4 +104,9 @@ Run the command below to install the necessary libraries.
 pip install -r requirements.txt
 ```
 
-
+## Authors
+- Syed Muhammad Hussain
+- Afsah Hyder
+- Samiya Ali Zaidi
+- Syed Muhammad Ali Rizvi
+- Dr. Muhammad Farhan
