@@ -98,7 +98,7 @@ All experiments in the category were performed using ``YOLOv8m``.
 └── ...
 ```
 
-### Installations Required
+## Installations Required
 Run the command below to install the necessary libraries.
 ```
 pip install -r requirements.txt
