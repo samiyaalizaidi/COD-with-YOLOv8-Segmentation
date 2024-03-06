@@ -4,7 +4,7 @@ import numpy as np
 # Define multiple datasets (you can modify this according to your datasets)
 datasets = {
     'COD-10K': {'total_images': 6000, 'images_used': 4000},
-    'MoCA': {'total_images': 18321, 'images_used': 4000},
+    'MoCA': {'total_images': 37000, 'images_used': 4000},
     'NC4K': {'total_images': 4121, 'images_used': 4000}
 }
 
