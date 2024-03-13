@@ -1,53 +1,59 @@
 import os
 import cv2
+import torch
 from tqdm import tqdm
 from pathlib import Path
 from ultralytics import YOLO
 
 def process_images(input_dir, output_dir, model_path):
-    # Load fine-tuned YOLOv5 model
+    # load fine tuned YOLOv8(n,m,x)-seg model
     model = YOLO(model_path)
 
-    # Create output directory for predictions to be saved
+    # create output directory for predictions to be saved
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    counter = 0
+    counter =0
+
 
     for img_name in tqdm(os.listdir(input_dir)):
         if img_name.endswith('.png'):
             img_path = os.path.join(input_dir, img_name)
             orig_img_name = img_name.rstrip(".png")
 
-            # Read image using cv2
+            # read image using cv2
             test_img = cv2.imread(img_path)
-
-            # Predict on test_img
+            
+            # predict on test_img
             try:
-                results = model.predict(source=test_img.copy(), save=False)
-                for det in results.pred[0]:
-                    label = int(det[5])
-                    conf = det[4]
-                    if conf > 0.5:  # Consider only detections with confidence > 0.5
-                        x_min, y_min, x_max, y_max = map(int, det[:4])
+              results = model.predict(source=test_img.copy(), save=True, save_txt=True)
+              #print("check out" , " " ,results)
+              seg_classes = list(results[0].names.values())
 
-                        # Draw bounding box on the image
-                        cv2.rectangle(test_img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
 
-                        # Write class label and confidence on the image
-                        label_text = f"{model.names[label]}: {conf:.2f}"
-                        cv2.putText(test_img, label_text, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+              for result in results:
+                  masks = result.masks.data
+                  boxes = result.boxes.data
+                  clss = boxes[:, 5]
 
-                # Save the image with bounding boxes
-                cv2.imwrite(os.path.join(output_dir, f'{orig_img_name}_segmented.png'), test_img)
+                  #EXTRACT A SINGLE MASK WITH ALL THE CLASSES
+                  obj_indices = torch.where(clss != -1)
+                  obj_masks = masks[obj_indices]
+                  obj_mask = torch.any(obj_masks, dim=0).int() * 255
+
+                  # Saving the binary mask output of the prediction
+                  cv2.imwrite(os.path.join(output_dir, f'{orig_img_name}.png'), obj_mask.cpu().numpy())
             except Exception as e:
-                counter += 1
-                print(f"Error: {e}")
-                print(f'Image Name: {orig_img_name}')
-
-    print(f'Corrupted Images: {counter}')
-
-# Usage | Following values need to be adjusted at the time of execution based on relevant experiment requirement
+              counter+=1
+              print(f"error: {e}")
+              print("\n"*3)
+              print(f'Image Name {orig_img_name}')
+              print("\n"*3)
+    print(f'Corrupted Images {counter}')
+              
+# usage | following values need to adjusted at the time of execution based on relevant experiment requirement
 INPUT_DIR = "/home/ah07065/Micro/Data_Split/test/images/"
-OUTPUT_DIR = "/home/ah07065/Micro/getpred/"
+OUTPUT_DIR = "/home/ah07065/Micro/Results/"
 MODEL_PATH = "/home/ah07065/Micro/runs/segment/Micro Segmentation/weights/best.pt"
 
 process_images(input_dir=INPUT_DIR, output_dir=OUTPUT_DIR, model_path=MODEL_PATH)
+
+# RESULTS
