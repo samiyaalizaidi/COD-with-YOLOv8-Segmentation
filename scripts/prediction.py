@@ -28,7 +28,7 @@ def process_images(input_dir, output_dir, model_path):
                     cv2.rectangle(test_img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
 
                     # Write class label and confidence on the image
-                    label_text = f"{model.names[int(label)]}: {conf:.2f}"
+                    label_text = f"{model.names[label]}: {conf:.2f}"
                     cv2.putText(test_img, label_text, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
                 # Save the image with bounding boxes
@@ -42,7 +42,7 @@ def process_images(input_dir, output_dir, model_path):
 
 # Usage | Following values need to be adjusted at the time of execution based on relevant experiment requirement
 INPUT_DIR = "/home/ah07065/Micro/Data_Split/test/images/"
-OUTPUT_DIR = "/home/ah07065/Micro/Results/"
+OUTPUT_DIR = "/home/ah07065/Micro/getpred/"
 MODEL_PATH = "/home/ah07065/Micro/runs/segment/Micro Segmentation/weights/best.pt"
 
 process_images(input_dir=INPUT_DIR, output_dir=OUTPUT_DIR, model_path=MODEL_PATH)
