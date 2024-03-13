@@ -23,13 +23,18 @@ def process_images(input_dir, output_dir, model_path):
             # Predict on test_img
             try:
                 results = model.predict(source=test_img.copy(), save=False)
-                for label, conf, x_min, y_min, x_max, y_max in results.xyxy[0]:
-                    # Draw bounding box on the image
-                    cv2.rectangle(test_img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
+                for det in results.pred[0]:
+                    label = int(det[5])
+                    conf = det[4]
+                    if conf > 0.5:  # Consider only detections with confidence > 0.5
+                        x_min, y_min, x_max, y_max = map(int, det[:4])
 
-                    # Write class label and confidence on the image
-                    label_text = f"{model.names[label]}: {conf:.2f}"
-                    cv2.putText(test_img, label_text, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                        # Draw bounding box on the image
+                        cv2.rectangle(test_img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
+
+                        # Write class label and confidence on the image
+                        label_text = f"{model.names[label]}: {conf:.2f}"
+                        cv2.putText(test_img, label_text, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
                 # Save the image with bounding boxes
                 cv2.imwrite(os.path.join(output_dir, f'{orig_img_name}_segmented.png'), test_img)
