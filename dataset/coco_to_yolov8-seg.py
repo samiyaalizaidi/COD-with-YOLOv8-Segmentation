@@ -37,26 +37,20 @@ import shutil
 import yaml
 
 # Function to convert images to YOLO format
-def convert_to_yolo(input_images_path, input_json_path, output_images_path, output_labels_path):
+def convert_to_yolo(input_images_path, input_json_path, output_labels_path):
     # Open JSON file containing image annotations
     f = open(input_json_path)
     data = json.load(f)
     f.close()
 
     # Create directories for output images and labels
-    os.makedirs(output_images_path, exist_ok=True)
     os.makedirs(output_labels_path, exist_ok=True)
 
     # List to store filenames
     file_names = []
     for filename in os.listdir(input_images_path):
         if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
-            source = os.path.join(input_images_path, filename)
-            destination = os.path.join(output_images_path, filename)
-            shutil.copy(source, destination)
             file_names.append(filename)
-
-    
 
     # Function to get image annotations
     def get_img_ann(image_id):
@@ -117,14 +111,13 @@ def create_yaml(input_json_path, output_yaml_path, train_path, val_path, test_pa
 
 
 if __name__ == "__main__":
-    base_input_path = "../CAMO/"
-    base_output_path = "../CAMO-Labels/"
+    base_input_path = "../Datasets/Kvasir-SEG-Split"
+    base_output_path = "../Datasets/Kvasir-SEG-Split"
 
-    # Processing validation dataset (if needed)
+    # Processing validation dataset 
     convert_to_yolo(
         input_images_path=os.path.join(base_input_path, "val/images"),
         input_json_path=os.path.join(base_input_path, "val/val.json"),
-        output_images_path=os.path.join(base_output_path, "val/images"),
         output_labels_path=os.path.join(base_output_path, "val/labels")
     )
 
@@ -132,15 +125,21 @@ if __name__ == "__main__":
     convert_to_yolo(
         input_images_path=os.path.join(base_input_path, "train/images"),
         input_json_path=os.path.join(base_input_path, "train/train.json"),
-        output_images_path=os.path.join(base_output_path, "train/images"),
         output_labels_path=os.path.join(base_output_path, "train/labels")
+    )
+
+    # Processing testing dataset 
+    convert_to_yolo(
+        input_images_path=os.path.join(base_input_path, "test/images"),
+        input_json_path=os.path.join(base_input_path, "test/test.json"),
+        output_labels_path=os.path.join(base_output_path, "test/labels")
     )
     
     # Creating the YAML configuration file
     create_yaml(
         input_json_path=os.path.join(base_input_path, "train/train.json"),
         output_yaml_path=os.path.join(base_output_path, "data.yaml"),
-        train_path="../yolo output/train/images",
-        val_path="../yolo output/val/images",
-        test_path='../yolo output/test/images'  # or None if not applicable
+        train_path="../Datasets/YOLOv8-Combined-Split/train/images",
+        val_path="../Datasets/YOLOv8-Combined-Split/val/images",
+        test_path='../Datasets/YOLOv8-Combined-Split/test/images'  # or None if not applicable
     )

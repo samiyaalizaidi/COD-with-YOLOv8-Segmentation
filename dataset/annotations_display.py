@@ -43,6 +43,6 @@ def display_image_with_annotations(image_path, annotation_path, colors=None):
     plt.show()  # Display the image with annotations
 
 # Example usage with specified image and annotation paths
-image_path = "../yolo output/train/images/camourflage_00003.jpg"
-annotation_path = "../yolo output/train/labels/camourflage_00003.txt"
+image_path = "../Datasets/Kvasir-SEG-Split/train/images/cju0u2g7pmnux0801vkk47ivj.jpg"
+annotation_path = "../Datasets/Kvasir-SEG-Split/train/labels/cju0u2g7pmnux0801vkk47ivj.txt"
 display_image_with_annotations(image_path, annotation_path)

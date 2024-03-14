@@ -1,5 +1,6 @@
 pyyaml
-ultralytics
 opencv-python
 matplotlib
 scikit-learn
+ultralytics==8.0.231
+boto3

@@ -48,7 +48,7 @@ import json
 import os
 import cv2
 
-MASK_EXT = 'png'
+MASK_EXT = 'jpg'
 ORIGINAL_EXT = 'jpg'
 image_id = 0
 annotation_id = 0
@@ -66,7 +66,7 @@ def images_annotations_info(maskpath):
 
     # Iterate through categories and corresponding masks
     for mask_image in glob.glob(os.path.join(maskpath, f'*.{MASK_EXT}')):
-        original_file_name = f'{os.path.basename(mask_image).split(".")[0]}.{ORIGINAL_EXT}'
+        original_file_name = f'{os.path.basename(mask_image).rsplit(".", 1)[0]}.{ORIGINAL_EXT}'
         mask_image_open = cv2.imread(mask_image)
         
         # Get image dimensions
@@ -111,6 +111,8 @@ def images_annotations_info(maskpath):
                 annotations.append(annotation)
                 annotation_id += 1
 
+            
+
     return images, annotations, annotation_id
 
 
@@ -138,10 +140,14 @@ def process_masks(mask_path, dest_json):
     print("Created %d annotations for images in folder: %s" % (annotation_cnt, mask_path))
 
 if __name__ == "__main__":
-    train_mask_path = "../CAMO/train/gt"
-    train_json_path = "../CAMO/train/train.json"
+    train_mask_path = "../Datasets/Kvasir-SEG-Split/train/gt"
+    train_json_path = "../Datasets/Kvasir-SEG-Split/train/train.json"
     process_masks(train_mask_path, train_json_path)
 
-    val_mask_path = "../CAMO/val/gt"
-    val_json_path = "../CAMO/val/val.json"
+    val_mask_path = "../Datasets/Kvasir-SEG-Split/val/gt"
+    val_json_path = "../Datasets/Kvasir-SEG-Split/val/val.json"
     process_masks(val_mask_path, val_json_path)
+
+    test_mask_path = "../Datasets/Kvasir-SEG-Split/test/gt"
+    test_json_path = "../Datasets/Kvasir-SEG-Split/test/test.json"
+    process_masks(test_mask_path, test_json_path)
