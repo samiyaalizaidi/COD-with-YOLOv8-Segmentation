@@ -1,5 +1,21 @@
 # Enhanced Camouflaged Object Detection for Agricultural Pest Management
 
+This repository contains the code, data, and resources for the paper:
+
+**"Enhanced Camouflaged Object Detection for Agricultural Pest Management: Insights from Unified Benchmark Dataset Analysis"**
+
+Published in: *2024 21st International Bhurban Conference on Applied Sciences and Technology (IBCAST)*
+
+## Abstract
+
+In recent decades, the severity of climate change has led to a rise in the frequency of agricultural pest attacks on farms causing significant economic damage and food shortages. Effective management of pests, specifically Camouflaged pests, poses significant challenges in agriculture, requiring accurate automated detection and segmentation.  In this study, we leverage state-of-the-art object detection and segmentation models, specifically the single-stage YOLOv8 model, fine-tuned on a large-scale Unified Benchmark Camouflaged Object Detection Dataset (UBCODD) consisting of 52,447 images. Furthermore, we extend our analysis to benchmark agricultural pest datasets such as IP-102 and the Locust-Mini Dataset, showcasing competitive performance metrics. This integrated approach allows us to capture agricultural camouflaged pests with greater detail and accuracy. Our findings lay the groundwork for the advancement of single-stage object detectors and segmentation models in the field of agriculture. Moreover, we contribute to open-source initiatives in agricultural technology by generating bounding box annotations for the entire IP-102 and binary masks for the Agricultural Pests Image Dataset. This research signifies a significant advancement in agricultural pest recognition and segmentation using cutting-edge computer vision technologies.
+
+## Requirements
+Run the command below to install the necessary libraries.
+```
+pip install -r requirements.txt
+```
+
 ## Experiments Performed
 
 These metrics were computed using the [COD-ToolBox](https://github.com/DengPingFan/CODToolbox) provided by Deng-Ping Fan et al. The tests were performed on the benchmark ``COD10K`` testing dataset that contains ``2026`` camouflaged images. 
@@ -98,15 +114,11 @@ All experiments in the category were performed using ``YOLOv8m``.
 └── ...
 ```
 
-## Installations Required
-Run the command below to install the necessary libraries.
-```
-pip install -r requirements.txt
-```
 
 ## Citations
-If you use our work in your research, please cite us:
-```
+If you use this work, please cite:
+
+```bibtex
 @inproceedings{UBCODD,
         title = {Enhanced Camouflaged Object Detection for Agricultural Pest Management: Insights from Unified Benchmark Dataset Analysis},
         author = {Hussain, Syed Muhammad and Zaidi, Samiya Ali and Hyder, Afsah and Rizvi, Syed Muhammad Ali and Farhan, Muhammad},
