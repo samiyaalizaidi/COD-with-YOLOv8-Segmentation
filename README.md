@@ -6,6 +6,11 @@ This repository contains the code, data, and resources for the paper:
 
 Published in: *2024 21st International Bhurban Conference on Applied Sciences and Technology (IBCAST)*
 
+
+<p align="center">
+ <img src="results/benchmark_Datasets.png" alt="Visual Results">
+</p>
+
 ## Abstract
 
 In recent decades, the severity of climate change has led to a rise in the frequency of agricultural pest attacks on farms causing significant economic damage and food shortages. Effective management of pests, specifically Camouflaged pests, poses significant challenges in agriculture, requiring accurate automated detection and segmentation.  In this study, we leverage state-of-the-art object detection and segmentation models, specifically the single-stage YOLOv8 model, fine-tuned on a large-scale Unified Benchmark Camouflaged Object Detection Dataset (UBCODD) consisting of 52,447 images. Furthermore, we extend our analysis to benchmark agricultural pest datasets such as IP-102 and the Locust-Mini Dataset, showcasing competitive performance metrics. This integrated approach allows us to capture agricultural camouflaged pests with greater detail and accuracy. Our findings lay the groundwork for the advancement of single-stage object detectors and segmentation models in the field of agriculture. Moreover, we contribute to open-source initiatives in agricultural technology by generating bounding box annotations for the entire IP-102 and binary masks for the Agricultural Pests Image Dataset. This research signifies a significant advancement in agricultural pest recognition and segmentation using cutting-edge computer vision technologies.
