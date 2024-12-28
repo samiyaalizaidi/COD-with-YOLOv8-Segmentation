@@ -1,4 +1,4 @@
-# Camouflaged Object Detection using the YOLOv8 Segmentation Architecture
+# Enhanced Camouflaged Object Detection for Agricultural Pest Management
 
 ## Experiments Performed
 
@@ -102,6 +102,18 @@ All experiments in the category were performed using ``YOLOv8m``.
 Run the command below to install the necessary libraries.
 ```
 pip install -r requirements.txt
+```
+
+## Citations
+If you use our work in your research, please cite us:
+```
+@inproceedings{UBCODD,
+        title = {Enhanced Camouflaged Object Detection for Agricultural Pest Management: Insights from Unified Benchmark Dataset Analysis},
+        author = {Hussain, Syed Muhammad and Zaidi, Samiya Ali and Hyder, Afsah and Rizvi, Syed Muhammad Ali and Farhan, Muhammad},
+        booktitle = {2024 21st International Bhurban Conference on Applied Sciences and Technology (IBCAST)},
+        year = {2024},
+        keywords = {Camouflaged Object Detection, YOLOv8, Agricultural Pests, UBCODD, IP-102, Locust-Mini}
+      }
 ```
 
 ## Authors
