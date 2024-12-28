@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use our research in your work, please cite using the following metadata."
+title: "Enhanced Camouflaged Object Detection for Agricultural Pest Management: Insights from Unified Benchmark Dataset Analysis"
+authors:
+  - family-names: "Hussain"
+    given-names: "Syed Muhammad"
+  - family-names: "Zaidi"
+    given-names: "Samiya Ali"
+  - family-names: "Hyder"
+    given-names: "Afsah"
+  - family-names: "Rizvi"
+    given-names: "Syed Muhammad Ali"
+  - family-names: "Farhan"
+    given-names: "Muhammad"
+abstract: >
+  In this research, advanced camouflaged pest detection models were developed using YOLOv8, fine-tuned on the Unified Benchmark Camouflaged Object Detection Dataset (UBCODD). The approach achieved state-of-the-art detection and segmentation performance on agricultural datasets such as IP-102 and Locust-Mini, with open-source contributions for future research.
+year: 2024
+keywords:
+  - Camouflaged Object Detection
+  - YOLOv8
+  - Agricultural Pests
+  - UBCODD
+  - IP-102
+  - Locust-Mini
+conference:
+  name: "2024 21st International Bhurban Conference on Applied Sciences and Technology (IBCAST)"
+type: conference-paper
